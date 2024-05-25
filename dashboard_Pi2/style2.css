@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -11,7 +10,7 @@
 }
 
 h1 {
-    color: #3B6505;
+    color: #ffffff;
 }
 
 .selection {
@@ -25,7 +24,7 @@ h1 {
 #select2 {
     margin-right: 15px;
     padding-right: 25px;
-
+    color: #ffffff;
 
 }
 
@@ -41,7 +40,7 @@ select {
     width: 200px;
     padding: 5px;
     border-radius: 4px;
-    background-color: #DBE9CB;
+    background-color: #ffffff;
 }
 
 .dashBoardEsq {
@@ -61,7 +60,7 @@ select {
     margin: 15px;
     height: 150px;
     border-radius: 5px;
-    background-color: #BEB19E;
+    background-color: #f5f5f5;
 }
 
 .dashBoard-grafico {
@@ -79,6 +78,12 @@ select {
     height: 150px;
     width: 300px;
     padding: 40px;
-    background-color: #9DAB8B;
+    background-color: #ffffff;
     float: left;
+}
+
+body {
+    background-color: #191970;
+
+
 }
