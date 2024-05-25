@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="header">
-        <h1>Dashboard</h1>
-    </div>
     <div class="main">
     <div class="sidebar">
         <p>Quantidade</p>
@@ -29,48 +26,67 @@
             </div>
         </div>
     </div>
-        <div class="content">
-            <div class="dashBoard-grafico">
-                <div id="grafico1"><canvas id="chart1"></canvas></div>
-                <div id="grafico2"><canvas id="chart2"></canvas></div>
-                <div id="grafico3"><canvas id="chart3"></canvas></div>
-                <div id="grafico4"><canvas id="chart4"></canvas></div>
-            </div>
+    <div class="content">
+        <div class="dashBoard-grafico">
+            <div id="grafico1"><canvas id="chart1"></canvas></div>
+            <div id="grafico2"><canvas id="chart2"></canvas></div>
+            <div id="grafico3"><canvas id="chart3"></canvas></div>
+            <div id="grafico4"><canvas id="chart4"></canvas></div>
         </div>
+    </div>
+    <div class="graficoline">
+        <div id="grafico5"><canvas id="chart5"></canvas></div>
+    </div>
+    
+
+
+
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             // Dados para os gráficos
             var data1 = {
-                labels: ['Red', 'Blue', 'Yellow'],
+                labels: ['Com água', 'Sem água'],
                 datasets: [{
-                    data: [30, 50, 20],
-                    backgroundColor: ['red', 'blue', 'yellow']
+                    data: [30, 50],
+                    backgroundColor: ['red', 'blue']
                 }]
             };
         
             var data2 = {
-                labels: ['Green', 'Purple', 'Orange'],
+                labels: ['Com energia', 'Sem energia'],
                 datasets: [{
-                    data: [40, 30, 30],
-                    backgroundColor: ['green', 'purple', 'orange']
+                    data: [40, 10],
+                    backgroundColor: ['green', 'purple']
                 }]
             };
         
             var data3 = {
-                labels: ['Gray', 'Brown', 'Black'],
+                labels: ['com coleta', 'sem coleta'],
                 datasets: [{
-                    data: [10, 45, 45],
-                    backgroundColor: ['gray', 'brown', 'black']
+                    data: [10, 45],
+                    backgroundColor: ['gray', 'brown']
                 }]
             };
-        
-            var data4 = {
-                labels: ['Cyan', 'Magenta', 'Yellow'],
-                datasets: [{
-                    data: [20, 30, 50],
-                    backgroundColor: ['cyan', 'magenta', 'yellow']
-                }]
-            };
+            const ctx = document.getElementById('chart4');
+
+                new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Particular', 'Federal', 'Estadual', 'Publica'],
+                    datasets: [{
+                    label: 'Problemas',
+                    data: [12, 19, 3, 5],
+                    borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                    }
+                }
+                });
         
             // Opções globais para os gráficos
             var options = {
