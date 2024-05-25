@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Dashboard</h1>
+    </div>
+    <div class="main">
+    <div class="sidebar">
+        <p>Quantidade</p>
+        <div class="dashBoardEsq">
+            <div id="dado1">
+                Quantidade de Escolas
+            </div>
+            <div id="dado2">
+                Quantidade com energia
+            </div>
+            <div id = 'dado3'>
+                Quantidade com agua 
+            </div>
+            <div id="dado4">
+                Quantidade de escolas com coleta seletiva
+    
+            </div>
+        </div>
+    </div>
+        <div class="content">
+            <div class="dashBoard-grafico">
+                <div id="grafico1"><canvas id="chart1"></canvas></div>
+                <div id="grafico2"><canvas id="chart2"></canvas></div>
+                <div id="grafico3"><canvas id="chart3"></canvas></div>
+                <div id="grafico4"><canvas id="chart4"></canvas></div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            // Dados para os gráficos
+            var data1 = {
+                labels: ['Red', 'Blue', 'Yellow'],
+                datasets: [{
+                    data: [30, 50, 20],
+                    backgroundColor: ['red', 'blue', 'yellow']
+                }]
+            };
+        
+            var data2 = {
+                labels: ['Green', 'Purple', 'Orange'],
+                datasets: [{
+                    data: [40, 30, 30],
+                    backgroundColor: ['green', 'purple', 'orange']
+                }]
+            };
+        
+            var data3 = {
+                labels: ['Gray', 'Brown', 'Black'],
+                datasets: [{
+                    data: [10, 45, 45],
+                    backgroundColor: ['gray', 'brown', 'black']
+                }]
+            };
+        
+            var data4 = {
+                labels: ['Cyan', 'Magenta', 'Yellow'],
+                datasets: [{
+                    data: [20, 30, 50],
+                    backgroundColor: ['cyan', 'magenta', 'yellow']
+                }]
+            };
+        
+            // Opções globais para os gráficos
+            var options = {
+                responsive: true,
+                maintainAspectRatio: false
+            };
+        
+            // Criação dos gráficos
+            var ctx1 = document.getElementById('chart1').getContext('2d');
+            var chart1 = new Chart(ctx1, {
+                type: 'pie',
+                data: data1,
+                options: options
+            });
+        
+            var ctx2 = document.getElementById('chart2').getContext('2d');
+            var chart2 = new Chart(ctx2, {
+                type: 'pie',
+                data: data2,
+                options: options
+            });
+        
+            var ctx3 = document.getElementById('chart3').getContext('2d');
+            var chart3 = new Chart(ctx3, {
+                type: 'pie',
+                data: data3,
+                options: options
+            });
+        
+            var ctx4 = document.getElementById('chart4').getContext('2d');
+            var chart4 = new Chart(ctx4, {
+                type: 'pie',
+                data: data4,
+                options: options
+            });
+        </script>
+        
+</div>
+</body>
+</html>
