@@ -1,0 +1,110 @@
+.header {
+    width: 100%;
+    background-color: #080438;
+    color: #ffffff;
+    padding: 10px 10px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: #000;
+}
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 40px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #050227;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px; /* Altura da header */
+}
+.sidebar {
+    width: 250px;
+    background-color: #080438;
+    color: #000;
+    padding: 15px;
+}
+
+.sidebar p {
+    text-align: center;
+    color: #ffffff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+.content {
+    padding: 20px;
+}
+
+.dashBoardEsq {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px;
+}
+
+#dado1,
+#dado2,
+#dado3,
+#dado4 {
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.dashBoard-grafico {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 25px;
+    text-align: center;
+}
+
+#grafico1,
+#grafico2,
+#grafico3,
+#grafico4 {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #ffffff;
+    margin: 10px;
+    max-width: 100%; /* Para garantir que o gráfico não ultrapasse o tamanho da tela */
+    width: calc(33.33% - 20px); /* Dividindo igualmente em 3 colunas, considerando margem de 10px */
+    box-sizing: border-box; /* Incluindo padding e bordas na largura total do elemento */
+    overflow: hidden; /* Para evitar que conteúdo interno ultrapasse os limites do contêiner */
+    display: inline-block; /* Mostrar elementos em linha, permitindo que fiquem ao lado um do outro */
+    vertical-align: top; /* Alinhar os elementos no topo para garantir que fiquem na mesma linha */
+}
+
+/* Media queries para ajustar o layout em diferentes tamanhos de tela */
+@media only screen and (min-width: 768px) {
+    .main {
+        flex-direction: row;
+    }
+    .sidebar {
+        height: auto;
+        position: relative;
+        top: auto;
+        box-shadow: none;
+    }
+    .content {
+        margin-left: 100px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .sidebar {
+        width: 100%;
+    }
+    .content {
+        margin-left: 0;
+    }
+}
