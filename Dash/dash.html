@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="main">
@@ -88,13 +88,12 @@
                 }
                 });
         
-            // Opções globais para os gráficos
+        
             var options = {
                 responsive: true,
                 maintainAspectRatio: false
             };
-        
-            // Criação dos gráficos
+     
             var ctx1 = document.getElementById('chart1').getContext('2d');
             var chart1 = new Chart(ctx1, {
                 type: 'pie',
