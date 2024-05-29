@@ -1,9 +1,9 @@
-/*antigo*/
 .dashBoard-grafico {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 25px;
+    text-align: center;
 }
 
 .dashBoard-grafico > div {
@@ -17,21 +17,24 @@ canvas {
     height: 200px !important;
 }
 
-h1{
+h1 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 40px;
 }
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #050227;
 }
+
 .main {
     display: flex;
     flex-direction: column;
     margin-top: 50px; /* Altura da header */
 }
+
 .sidebar {
     width: 300px;
     background-color: #080438;
@@ -67,14 +70,6 @@ body {
     background-color: #f0f0f0;
 }
 
-.dashBoard-grafico {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 25px;
-    text-align: center;
-}
-
 #grafico1,
 #grafico2,
 #grafico3,
@@ -83,15 +78,14 @@ body {
     padding: 10px;
     background-color: #ffffff;
     margin: 10px;
-    max-width: 100%; /* Para garantir que o gráfico não ultrapasse o tamanho da tela */
-    width: calc(33.33% - 20px); /* Dividindo igualmente em 3 colunas, considerando margem de 10px */
-    box-sizing: border-box; /* Incluindo padding e bordas na largura total do elemento */
-    overflow: hidden; /* Para evitar que conteúdo interno ultrapasse os limites do contêiner */
-    display: inline-block; /* Mostrar elementos em linha, permitindo que fiquem ao lado um do outro */
-    vertical-align: top; /* Alinhar os elementos no topo para garantir que fiquem na mesma linha */
+    max-width: 100%;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
 }
 
-/* Media queries para ajustar o layout em diferentes tamanhos de tela */
 @media only screen and (min-width: 768px) {
     .main {
         flex-direction: row;
