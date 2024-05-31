@@ -7,128 +7,33 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parse/3.4.3/parse.min.js"></script>
     <script src="back4app.js" defer></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1>Dashboard</h1>
     <div id="data-container"></div>
     
     <div class="main">
-    <div class="sidebar">
-        <p>Quantidade</p>
-        <div class="dashBoardEsq">
-            <div id="dado1">
-                Quantidade de Escolas
-            </div>
-            <div id="dado2">
-                Quantidade com energia
-            </div>
-            <div id = 'dado3'>
-                Quantidade com agua 
-            </div>
-            <div id="dado4">
-                Quantidade de escolas com coleta seletiva
-    
+        <div class="sidebar">
+            <p>Quantidade</p>
+            <div class="dashBoardEsq">
+                <div id="dado1">Quantidade de Escolas</div>
+                <div id="dado2">Quantidade com energia</div>
+                <div id="dado3">Quantidade com água</div>
+                <div id="dado4">Quantidade de escolas com coleta seletiva</div>
             </div>
         </div>
-    </div>
-    <div class="content">
-        <div class="dashBoard-grafico">
-            <div id="grafico1"><canvas id="chart1"></canvas></div>
-            <div id="grafico2"><canvas id="chart2"></canvas></div>
-            <div id="grafico3"><canvas id="chart3"></canvas></div>
-            <div id="grafico4"><canvas id="chart4"></canvas></div>
+        <div class="content">
+            <div class="dashBoard-grafico">
+                <div id="grafico1"><canvas id="chart1"></canvas></div>
+                <div id="grafico2"><canvas id="chart2"></canvas></div>
+                <div id="grafico3"><canvas id="chart3"></canvas></div>
+                <div id="grafico4"><canvas id="chart4"></canvas></div>
+            </div>
+        </div>
+        <div class="graficoline">
+            <div id="grafico5"><canvas id="chart5"></canvas></div>
         </div>
     </div>
-    <div class="graficoline">
-        <div id="grafico5"><canvas id="chart5"></canvas></div>
-    </div>
-    
-
-
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-            // Dados para os gráficos
-            var data1 = {
-                labels: ['Com água', 'Sem água'],
-                datasets: [{
-                    data: [30, 50],
-                    backgroundColor: ['red', 'blue']
-                }]
-            };
-        
-            var data2 = {
-                labels: ['Com energia', 'Sem energia'],
-                datasets: [{
-                    data: [40, 10],
-                    backgroundColor: ['green', 'purple']
-                }]
-            };
-        
-            var data3 = {
-                labels: ['com coleta', 'sem coleta'],
-                datasets: [{
-                    data: [10, 45],
-                    backgroundColor: ['gray', 'brown']
-                }]
-            };
-            const ctx = document.getElementById('chart4');
-
-                new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Particular', 'Federal', 'Estadual', 'Publica'],
-                    datasets: [{
-                    label: 'Problemas',
-                    data: [12, 19, 3, 5],
-                    borderWidth: 2
-                    }]
-                },
-                options: {
-                    scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                    }
-                }
-                });
-        
-        
-            var options = {
-                responsive: true,
-                maintainAspectRatio: false
-            };
-     
-            var ctx1 = document.getElementById('chart1').getContext('2d');
-            var chart1 = new Chart(ctx1, {
-                type: 'pie',
-                data: data1,
-                options: options
-            });
-        
-            var ctx2 = document.getElementById('chart2').getContext('2d');
-            var chart2 = new Chart(ctx2, {
-                type: 'pie',
-                data: data2,
-                options: options
-            });
-        
-            var ctx3 = document.getElementById('chart3').getContext('2d');
-            var chart3 = new Chart(ctx3, {
-                type: 'pie',
-                data: data3,
-                options: options
-            });
-        
-            var ctx4 = document.getElementById('chart4').getContext('2d');
-            var chart4 = new Chart(ctx4, {
-                type: 'pie',
-                data: data4,
-                options: options
-            });
-        </script>
-        
-</div>
 </body>
 </html>
