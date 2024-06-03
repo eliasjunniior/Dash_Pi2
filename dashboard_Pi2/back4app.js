@@ -81,7 +81,7 @@ Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAw
     async function fetchAllData(className) {
         const query = new Parse.Query(className);
         let allResults = [];
-        let limit = 100;
+        let limit = 20;
         let skip = 0;
       
         while (true) {
