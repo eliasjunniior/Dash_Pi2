@@ -77,3 +77,38 @@ Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAw
     }
 
     window.onload = fetchDataAndDisplay;
+
+    async function fetchAllData(className) {
+        const query = new Parse.Query(className);
+        let allResults = [];
+        let limit = 100;
+        let skip = 0;
+      
+        while (true) {
+          query.limit(limit);
+          query.skip(skip);
+      
+          try {
+            const results = await query.find();
+            if (results.length === 0) {
+              break;
+            }
+      
+            allResults = allResults.concat(results);
+            skip += limit;
+          } catch (error) {
+            console.error('Error while fetching data:', error);
+            break;
+          }
+        }
+      
+        return allResults;
+      }
+      
+      // Uso da função
+      fetchAllData('censo_inep_2023').then(allData => {
+        console.log('Total de dados recuperados:', allData.length);
+        console.log(allData);
+      }).catch(error => {
+        console.error('Erro ao buscar dados:', error);
+      });
