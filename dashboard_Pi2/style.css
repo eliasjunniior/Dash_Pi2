@@ -35,6 +35,9 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: 50px; /* Altura da header */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+
 }
 
 .sidebar {
