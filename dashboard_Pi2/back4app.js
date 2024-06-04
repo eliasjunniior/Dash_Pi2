@@ -50,9 +50,8 @@ Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAw
                 data: {
                     labels: ['Particular', 'Federal', 'Estadual', 'Publica'],
                     datasets: [{
-                    label: 'Problemas',
-                    data: [12, 19, 3, 5],
-                    borderWidth: 2
+                    label: 'Tipo de dependência',
+                    borderWidth: 5
                     }]
                 },
                 options: {
