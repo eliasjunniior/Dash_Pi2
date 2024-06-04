@@ -60,6 +60,9 @@ body {
     flex-direction: column;
     text-align: center;
     margin: 10px;
+    font-family: 'Times New Roman';
+    
+
 }
 
 #dado1,
