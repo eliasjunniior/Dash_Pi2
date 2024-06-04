@@ -91,6 +91,7 @@ Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAw
                 options: options
             });
 
+
         } catch (error) {
             console.error('Erro ao buscar dados: ', error);
         }
