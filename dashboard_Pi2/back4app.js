@@ -43,25 +43,6 @@ Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAw
                     backgroundColor: ['gray', 'brown']
                 }]
             };
-             const ctx = document.getElementById('chart4');
-
-                new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Particular', 'Federal', 'Estadual', 'Pública'],
-                    datasets: [{
-                    label: 'Tipo de dependência',
-                    borderWidth: 5
-                    }]
-                },
-                options: {
-                    scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                    }
-                }
-                });
 
             // Atualizar gráficos
             var options = {
@@ -96,69 +77,7 @@ Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAw
                 data: data3,
                 options: options
             });
-
-            async function prepareChartData(className) {
-                try {
-                  const allData = await fetchAllData(className);
-            
-                  const dependencyTypeCounts = allData.reduce((acc, item) => {
-                    const type = item.get('tipoDependencia'); 
-                    acc[type] = (acc[type] || 0) + 1;
-                    return acc;
-                  }, {});
-              
-                  return {
-                    labels: Object.keys(dependencyTypeCounts),
-                    data: Object.values(dependencyTypeCounts),
-                  };
-                } catch (error) {
-                  console.error('Error while preparing chart data:', error);
-                }
-              }
-              
-              // Função para renderizar o gráfico
-              async function renderChart(chartId, className) {
-                const ctx = document.getElementById(chartId);
-                if (!ctx) {
-                  console.error('Chart element not found');
-                  return;
-                }
-                
-                const chartData = await prepareChartData(className);
-                
-                if (chartData) {
-                  new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                      labels: chartData.labels,
-                      datasets: [] [{
-                        label: 'Tipo de dependência',
-                        data: chartData.data,
-                        borderWidth: 5
-                      }]
-                    },
-                    options: {
-                      scales: {
-                        y: {
-                          beginAtZero: true
-                        }
-                      }
-                    }
-                  });
-                }
-              }
-              
-              // Inicializa o gráfico após o carregamento da página
-              document.addEventListener('DOMContentLoaded', () => {
-                renderChart('chart4', 'censo_inep_2023'); 
-              });
-
-
-        } catch (error) {
-            console.error('Erro ao buscar dados: ', error);
-        }
-    }
-
+   
     window.onload = fetchDataAndDisplay;
 
     async function fetchAllData(className) {
