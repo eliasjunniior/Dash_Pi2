@@ -43,6 +43,26 @@ Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAw
                     backgroundColor: ['gray', 'brown']
                 }]
             };
+             const ctx = document.getElementById('chart4');
+
+                new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Particular', 'Federal', 'Estadual', 'Publica'],
+                    datasets: [{
+                    label: 'Problemas',
+                    data: [12, 19, 3, 5],
+                    borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                    }
+                }
+                });
 
             // Atualizar gráficos
             var options = {
