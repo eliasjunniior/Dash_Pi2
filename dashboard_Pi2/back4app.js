@@ -102,7 +102,7 @@ Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAw
                   const allData = await fetchAllData(className);
             
                   const dependencyTypeCounts = allData.reduce((acc, item) => {
-                    const type = item.get('tipoDependencia'); // ou item.tipoDependencia dependendo do seu schema
+                    const type = item.get('tipoDependencia'); 
                     acc[type] = (acc[type] || 0) + 1;
                     return acc;
                   }, {});
@@ -131,7 +131,7 @@ Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAw
                     type: 'bar',
                     data: {
                       labels: chartData.labels,
-                      datasets: [{
+                      datasets: [] [{
                         label: 'Tipo de dependência',
                         data: chartData.data,
                         borderWidth: 5
