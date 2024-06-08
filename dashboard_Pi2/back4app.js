@@ -5,6 +5,7 @@ Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAw
         const TestObject = Parse.Object.extend('censo_inep_2023');
         const query = new Parse.Query(TestObject);
         try {
+            query.limit(100000);
             const results = await query.find();
 
             // Manipular os dados obtidos
