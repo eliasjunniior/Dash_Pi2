@@ -1,80 +1,103 @@
 Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAwUpqQ3mpg8hpEL5t6auoAAZ');
-    Parse.serverURL = 'https://parseapi.back4app.com';
+Parse.serverURL = 'https://parseapi.back4app.com';
 
-    async function fetchDataAndDisplay() {
-        const TestObject = Parse.Object.extend('censo_inep_2023');
-        const query = new Parse.Query(TestObject);
-        try {
-            query.limit(100000);
+async function fetchDataAndDisplay() {
+    const TestObject = Parse.Object.extend('censo_inep_2023');
+    const limit = 1000; // Limite máximo de registros por consulta
+    let skip = 0; // como é o inicio natural começar de 0
+    let allQuantidadeEscolas = 0;
+    let allQuantidadeComEnergia = 0;
+    let allQuantidadeComAgua = 0;
+    let allQuantidadeComEsgoto = 0;
+
+    try {
+        while (true) {
+            const query = new Parse.Query(TestObject);
+            query.select('IN_ENERGIA_REDE_PUBLICA', 'IN_AGUA_REDE_PUBLICA', 'IN_ESGOTO_REDE_PUBLICA'); // Selecionar apenas os campos necessários
+            query.limit(limit);
+            query.skip(skip);
+
             const results = await query.find();
+            
+            if (results.length === 0) {
+                break; // Se não há mais resultados, sair do loop
+            }
 
-            // Manipular os dados obtidos
-            const quantidadeEscolas = results.length;
-            const quantidadeComEnergia = results.filter(result => result.get('IN_ENERGIA_REDE_PUBLICA') === 1).length;
-            const quantidadeComAgua = results.filter(result => result.get('IN_AGUA_REDE_PUBLICA') === 1).length;
-            const quantidadeComEsgoto = results.filter(result => result.get('IN_ESGOTO_REDE_PUBLICA') === 1).length;
+            // Atualizando incrementalmente os dados da consulta
+            allQuantidadeEscolas += results.length;
+            allQuantidadeComEnergia += results.filter(result => result.get('IN_ENERGIA_REDE_PUBLICA') === 1).length;
+            allQuantidadeComAgua += results.filter(result => result.get('IN_AGUA_REDE_PUBLICA') === 1).length;
+            allQuantidadeComEsgoto += results.filter(result => result.get('IN_ESGOTO_REDE_PUBLICA') === 1).length;
 
-            // Atualizar dados no dashboard
-            document.getElementById('dado1').textContent = `Quantidade de Escolas: ${quantidadeEscolas}`;
-            document.getElementById('dado2').textContent = `Quantidade com energia: ${quantidadeComEnergia}`;
-            document.getElementById('dado3').textContent = `Quantidade com água: ${quantidadeComAgua}`;
-            document.getElementById('dado4').textContent = `Quantidade de escolas com esgoto: ${quantidadeComEsgoto}`;
+            // Atualizar dados no dashboard incrementalmente
+            document.getElementById('dado1').textContent = `Quantidade de Escolas: ${allQuantidadeEscolas}`;
+            document.getElementById('dado2').textContent = `Quantidade com energia: ${allQuantidadeComEnergia}`;
+            document.getElementById('dado3').textContent = `Quantidade com água: ${allQuantidadeComAgua}`;
+            document.getElementById('dado4').textContent = `Quantidade de escolas com esgoto: ${allQuantidadeComEsgoto}`;
 
-            // Dados para os gráficos
-            var data1 = {
-                labels: ['Com água', 'Sem água'],
-                datasets: [{
-                    data: [quantidadeComAgua, quantidadeEscolas - quantidadeComAgua],
-                    backgroundColor: ['blue', 'red']
-                }]
-            };
+            // Incrementar o valor de skip para buscar o próximo conjunto de dados
+            skip += limit;
 
-            var data2 = {
-                labels: ['Com energia', 'Sem energia'],
-                datasets: [{
-                    data: [quantidadeComEnergia, quantidadeEscolas - quantidadeComEnergia],
-                    backgroundColor: ['green', 'purple']
-                }]
-            };
-
-            var data3 = {
-                labels: ['Com esgoto', 'Sem esgoto'],
-                datasets: [{
-                    data: [quantidadeComEsgoto, quantidadeEscolas - quantidadeComEsgoto],
-                    backgroundColor: ['gray', 'brown']
-                }]
-            };
-
-            // Atualizar gráficos
-            var options = {
-                responsive: true,
-                maintainAspectRatio: false
-            };
-
-            var ctx1 = document.getElementById('chart1').getContext('2d');
-            var chart1 = new Chart(ctx1, {
-                type: 'pie',
-                data: data1,
-                options: options
-            });
-
-            var ctx2 = document.getElementById('chart2').getContext('2d');
-            var chart2 = new Chart(ctx2, {
-                type: 'pie',
-                data: data2,
-                options: options
-            });
-
-            var ctx3 = document.getElementById('chart3').getContext('2d');
-            var chart3 = new Chart(ctx3, {
-                type: 'pie',
-                data: data3,
-                options: options
-            });
-
-        } catch (error) {
-            console.error('Erro ao buscar dados: ', error);
+            // Adcionando o pequeno delay para evitar a sobrecarga do servidor
+            await new Promise(resolve => setTimeout(resolve, 100));
         }
-    }
 
-    window.onload = fetchDataAndDisplay;
+
+        // Dados para os gráficos
+        var data1 = {
+            labels: ['Com água', 'Sem água'],
+            datasets: [{
+                data: [allQuantidadeComAgua, allQuantidadeEscolas - allQuantidadeComAgua],
+                backgroundColor: ['blue', 'red']
+            }]
+        };
+
+        var data2 = {
+            labels: ['Com energia', 'Sem energia'],
+            datasets: [{
+                data: [allQuantidadeComEnergia, allQuantidadeEscolas - allQuantidadeComEnergia],
+                backgroundColor: ['green', 'purple']
+            }]
+        };
+
+        var data3 = {
+            labels: ['Com esgoto', 'Sem esgoto'],
+            datasets: [{
+                data: [allQuantidadeComEsgoto, allQuantidadeEscolas - allQuantidadeComEsgoto],
+                backgroundColor: ['gray', 'brown']
+            }]
+        };
+
+        // Atualizar gráficos
+        var options = {
+            responsive: true,
+            maintainAspectRatio: false
+        };
+
+        var ctx1 = document.getElementById('chart1').getContext('2d');
+        var chart1 = new Chart(ctx1, {
+            type: 'pie',
+            data: data1,
+            options: options
+        });
+
+        var ctx2 = document.getElementById('chart2').getContext('2d');
+        var chart2 = new Chart(ctx2, {
+            type: 'pie',
+            data: data2,
+            options: options
+        });
+
+        var ctx3 = document.getElementById('chart3').getContext('2d');
+        var chart3 = new Chart(ctx3, {
+            type: 'pie',
+            data: data3,
+            options: options
+        });
+
+    } catch (error) {
+        console.error('Erro ao buscar dados: ', error);
+    }
+}
+
+window.onload = fetchDataAndDisplay;
