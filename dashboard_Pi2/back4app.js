@@ -1,4 +1,4 @@
-Parse.initialize('jFc8weoj0ooJf9ImqkiTjVg8bkJ1FfPS9nBPjUHS', '1jzfDQ7nCu6UgkoBAwUpqQ3mpg8hpEL5t6auoAAZ');
+Parse.initialize('Gh9UJWigIWkfrkieRZXmkbMi5SOmXUy6SZhxhlSD', 'iNr65O5aKejciJMKUYFirb1LNKeeDhUb0zxsk7AL');
 Parse.serverURL = 'https://parseapi.back4app.com';
 
 async function fetchDataAndDisplay() {
